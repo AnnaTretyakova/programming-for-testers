@@ -2,7 +2,8 @@ package com.example.tests;
 
 import org.testng.annotations.Test;
 
-public class CreateGroupTests extends TestBase {
+public class AlsoCreateGroupTests extends TestBase {
+  
   @Test
   public void testNonEmptyGroupCreation() throws Exception {
 	openMainPage();
