@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 public class CreateContactTests extends TestBase {
 
   @Test
-  public void testUntitled3() throws Exception {
+  public void testContactCreation() throws Exception {
 	openMainPage();
 	initContactCreation();	
     ContactData contact = new ContactData();
