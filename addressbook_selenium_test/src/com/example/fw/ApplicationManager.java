@@ -10,11 +10,7 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
 
-import com.example.tests.ContactData;
-import com.example.tests.GroupData;
-import com.example.tests.TestBase;
 
 public class ApplicationManager {
 	
@@ -22,6 +18,10 @@ public class ApplicationManager {
 	public static String baseUrl;
 	public static boolean acceptNextAlert = true;
 	public static StringBuffer verificationErrors = new StringBuffer();
+	
+	public NavigationHelper navigationHelper;
+	public GroupHelper groupHelper;
+	public ContactHelper contactHelper;
 	
 	public ApplicationManager() {
 		 driver = new FirefoxDriver();
@@ -37,10 +37,6 @@ public class ApplicationManager {
 		    }
 	}
 	
-	public void openMainPage() {
-	    driver.get(baseUrl + "/addressbookv4.1.4/");
-	}
-
 	public boolean isElementPresent(By by) {
 	    try {
 	      driver.findElement(by);
@@ -73,70 +69,4 @@ public class ApplicationManager {
 	      acceptNextAlert = true;
 	    }
 	  }
-
-	public void gotoGroupsPage() {
-	    driver.findElement(By.linkText("groups")).click();
-	}
-
-	public void initGroupCreation() {
-	    driver.findElement(By.name("new")).click();
-	}
-
-	public void fillGroupForm(TestBase testBase, GroupData group) {
-	    driver.findElement(By.name("group_name")).click();
-	    driver.findElement(By.name("group_name")).clear();
-	    driver.findElement(By.name("group_name")).sendKeys(group.name);
-	    driver.findElement(By.name("group_header")).clear();
-	    driver.findElement(By.name("group_header")).sendKeys(group.header);
-	    driver.findElement(By.name("group_footer")).clear();
-	    driver.findElement(By.name("group_footer")).sendKeys(group.footer);
-	}
-
-	public void submitGroupCreation() {
-	    driver.findElement(By.name("submit")).click();
-	}
-
-	public void returnGroupPage() {
-		driver.findElement(By.linkText("group page")).click();
-	}
-
-	public void initContactCreation() {
-		driver.findElement(By.linkText("add new")).click();
-	}
-
-	public void fillContactForm(TestBase testBase, ContactData contact) {
-		driver.findElement(By.name("firstname")).clear();
-	    driver.findElement(By.name("firstname")).sendKeys(contact.firstname);
-	    driver.findElement(By.name("lastname")).clear();
-	    driver.findElement(By.name("lastname")).sendKeys(contact.lastname);
-	    driver.findElement(By.name("address")).clear();
-	    driver.findElement(By.name("address")).sendKeys(contact.address);
-	    driver.findElement(By.name("home")).clear();
-	    driver.findElement(By.name("home")).sendKeys(contact.homephone);
-	    driver.findElement(By.name("mobile")).clear();
-	    driver.findElement(By.name("mobile")).sendKeys(contact.mobilephone);
-	    driver.findElement(By.name("work")).clear();
-	    driver.findElement(By.name("work")).sendKeys(contact.workphone);
-	    driver.findElement(By.name("email")).clear();
-	    driver.findElement(By.name("email")).sendKeys(contact.email);
-	    driver.findElement(By.name("email2")).clear();
-	    driver.findElement(By.name("email2")).sendKeys(contact.email2);
-	    new Select(driver.findElement(By.name("bday"))).selectByVisibleText(contact.bday);
-	    new Select(driver.findElement(By.name("bmonth"))).selectByVisibleText(contact.bmonth);
-	    driver.findElement(By.name("byear")).clear();
-	    driver.findElement(By.name("byear")).sendKeys(contact.byear);
-	    new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contact.group);
-	    driver.findElement(By.name("address2")).clear();
-	    driver.findElement(By.name("address2")).sendKeys(contact.address2);
-	    driver.findElement(By.name("phone2")).clear();
-	    driver.findElement(By.name("phone2")).sendKeys(contact.homephone2);
-	}
-
-	public void submitNewContact() {
-		driver.findElement(By.name("submit")).click();
-	}
-
-	public void returnHomePage() {
-		driver.findElement(By.linkText("home page")).click();
-	}
 }
