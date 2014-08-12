@@ -2,14 +2,18 @@ package com.example.fw;
 
 import org.openqa.selenium.By;
 
-public class NavigationHelper {
+public class NavigationHelper extends HelperBase {
+
+	public NavigationHelper(ApplicationManager manager) {
+		super(manager);
+	}
 
 	public void openMainPage() {
-	    ApplicationManager.driver.get(ApplicationManager.baseUrl + "/addressbookv4.1.4/");
+	    driver.get(manager.baseUrl + "/addressbookv4.1.4/");
 	}
 
 	public void gotoGroupsPage() {
-	    ApplicationManager.driver.findElement(By.linkText("groups")).click();
+	    driver.findElement(By.linkText("groups")).click();
 	}
 	
 
