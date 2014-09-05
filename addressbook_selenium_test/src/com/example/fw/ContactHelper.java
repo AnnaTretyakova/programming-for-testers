@@ -39,14 +39,22 @@ public class ContactHelper extends HelperBase {
 		click(By.linkText("home page"));
 	}
 	
-	public void initContactModification(int index){
+	public void initContactModification(int index) throws Exception { 
+		if (isPencilOnPage()){
 		click(By.xpath("//tr[" + (index + 1) + "]//a/img[@title = 'Edit']"));
+		} else {
+			throw new Exception("there is no contact to delete/modify");
+		}
 	}
 	
-	public void deleteContact(int index) {
-		initContactModification(index);
-		click(By.xpath("//input[@value = 'Delete']"));
-		}
+	public void deleteContact(int index) throws Exception { 
+			initContactModification(index);
+			click(By.xpath("//input[@value = 'Delete']"));
+	}
+	
+	private boolean isPencilOnPage() {
+		return isElementPresent(By.xpath("//tr//a/img[@title = 'Edit']"));
+	}
 	
 	public void submitContactModification() {
 		click(By.xpath("//input[@value = 'Update']"));		

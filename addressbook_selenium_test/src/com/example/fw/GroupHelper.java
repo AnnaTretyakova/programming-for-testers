@@ -28,18 +28,31 @@ public class GroupHelper extends HelperBase {
 		click(By.linkText("group page"));
 	}
 
-	public void deleteGroup(int index) {
-		selectGroupByIndex(index);
-		click(By.name("delete"));		
+	public void deleteGroup(int index) throws Exception {
+		if (isCheckboxOnPage()){
+			selectGroupByIndex(index);
+			click(By.name("delete"));	
+		} else {
+			throw new Exception("there is no group to delete");
+		}
 	}
+	
+	private boolean isCheckboxOnPage() {
+		return isElementPresent(By.xpath("//input[@name = 'selected[]']"));
+	}
+	
 
 	private void selectGroupByIndex(int index) {
 		click(By.xpath("//input[@name = 'selected[]'][" + index + "]"));
 	}
-
-	public void initGroupModification(int index) {
+	
+	public void initGroupModification(int index) throws Exception {
+		if (isCheckboxOnPage()){
 		selectGroupByIndex(index);
 		click(By.name("edit"));	
+		} else {
+			throw new Exception("there is no group to modify");
+		}
 	}
 
 	public void submitGroupModification() {
