@@ -1,0 +1,17 @@
+{
+  "C:\\Projects\\programming-for-testers\\addressbook_selenium_test\\src": {
+    "location": "C:\\Projects\\programming-for-testers\\addressbook_selenium_test\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Projects\\programming-for-testers\\addressbook_selenium_test\\src\u0027. Skipped."
+  },
+  "C:\\Program Files\\Java\\jdk1.7.0_45\\jre\\lib\\rt.jar": {
+    "coordinate": "jre:jre:zip:call:1.0.0",
+    "location": "C:\\Program Files\\Java\\jdk1.7.0_45\\jre\\lib\\rt.jar",
+    "status": "RESOLVED"
+  },
+  "C:\\Projects\\selenium-server-standalone-2.42.2.jar": {
+    "location": "C:\\Projects\\selenium-server-standalone-2.42.2.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027C:\\Projects\\selenium-server-standalone-2.42.2.jar\u0027. Neither fingerprint \u0027921005b6628821c9a29de6358917a82d1e3dfa94\u0027 nor symbolic name \u0027org.yaml.snakeyaml\u0027 are known."
+  }
+}

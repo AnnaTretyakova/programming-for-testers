@@ -1,6 +1,0 @@
-.settings/**
-bin/**
-test-output/**
-.metadata/**
-.idea/**
-addressbook_selenium_test.iml/**
