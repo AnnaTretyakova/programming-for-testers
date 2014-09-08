@@ -1,19 +1,39 @@
 package com.example.tests;
 
+import static org.testng.Assert.assertEquals;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
 import org.testng.annotations.Test;
 
 public class GroupModificationTests extends TestBase {
 	
-	@Test
-	public void modifySomeGroup() throws Exception {
-		int index = 1;
+	@Test (dataProvider = "randomValidGroupGenerator")
+	public void modifySomeGroup(GroupData group) throws Exception {
 		app.getNavigationHelper().openMainPage();
 	    app.getNavigationHelper().gotoGroupsPage();
+	    
+	    //save old state
+	    List<GroupData> oldList = app.getGroupHelper().getGroups();
+	    
+	    Random rnd = new Random();
+		int index = rnd.nextInt(oldList.size()-1);
+	    
+	    //actions
 		app.getGroupHelper().initGroupModification(index);
-		GroupData group = new GroupData();
-		group.name = "new name";
 		app.getGroupHelper().fillGroupForm(group);
 		app.getGroupHelper().submitGroupModification();
-		app.getGroupHelper().returnGroupPage();		
+		app.getGroupHelper().returnGroupPage();
+		
+		//save new state
+	    List<GroupData> newList = app.getGroupHelper().getGroups();
+	    
+	    //compare states  
+	    oldList.remove(index);
+	    oldList.add(group);
+	    Collections.sort(oldList);
+	    assertEquals(oldList, newList);
 	}
 }
