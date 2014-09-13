@@ -9,13 +9,13 @@ import org.testng.annotations.Test;
 public class ContactCreationTests extends TestBase {
 
   @Test
-  public void testNonEmptyContactCreation() throws Exception {
-	  
+  public void testNonEmptyContactCreation() throws Exception {	
+	app.getNavigationHelper().openMainPage();
+		  	  
 	//save old state 
 	List<ContactData> oldList = app.getContactHelper().getContacts();
 	
 	//actions
-	app.getNavigationHelper().openMainPage();
 	app.getContactHelper().initContactCreation();	
     ContactData contact = new ContactData();
     contact.firstname = "Anna";
@@ -42,11 +42,10 @@ public class ContactCreationTests extends TestBase {
     //compare states
     oldList.add(contact);
     Collections.sort(oldList);
-    assertEquals(oldList, newList);
-    
+    assertEquals(oldList, newList); 
   } 
   
-  @Test
+  @Test(enabled = false)
   public void testEmptyContactCreation() throws Exception {
 	app.getNavigationHelper().openMainPage();
 	app.getContactHelper().initContactCreation();	
