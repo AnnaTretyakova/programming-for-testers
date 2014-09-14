@@ -38,12 +38,92 @@ public class TestBase {
 		return list.iterator();
 	}
 	
+	@DataProvider
+	public Iterator<Object[]> randomValidContactGenerator(){
+		List<Object[]> list = new ArrayList<Object[]>();
+		Random rnd = new Random();
+		for (int i = 0; i<5; i++){
+			ContactData contact = new ContactData();
+			contact.firstname = generateRandomString();
+			contact.lastname = generateRandomString();
+			contact.address = generateRandomString();
+			contact.homephone = generateRandomNumber(89999999999);
+			contact.mobilephone = generateRandomNumber(89999999999);
+			contact.workphone = generateRandomNumber(89999999999);
+			contact.email = generateRandomString();
+			contact.email2 = generateRandomString();
+			contact.bmonth = generateRandomMonth();
+			if (contact.bmonth == "February"){				
+				contact.bday = generateRandomNumber(29);
+			} else if (contact.bmonth.equals("January")||contact.bmonth.equals("March")||contact.bmonth.equals("May")||contact.bmonth.equals("July")||contact.bmonth.equals("August")||contact.bmonth.equals("October")||contact.bmonth.equals("December")) {
+				contact.bday = generateRandomNumber(31);
+			} else {
+				contact.bday = generateRandomNumber(30);
+			}
+			contact.byear = generateRandomByear();
+			contact.address2 = generateRandomString();;
+			contact.homephone2 = generateRandomString();;
+			list.add(new Object[]{contact});
+		}
+		return list.iterator();
+	}
+	
 	public String generateRandomString(){
 		Random rnd = new Random();
-		if (rnd.nextInt(3)==0){
+		String alphabet = "qwertyuiopasdfghjklzxcvbnm";
+		String symbols = "!@#$%^&*()_+{}|:<>?-=[]\\;,./\'\" ";
+		int rndValue = rnd.nextInt(4);
+		if (rndValue == 0){
 			 return "";
-			} else {
-			return "test" + rnd.nextInt();
+		} else if (rndValue == 1) {
+			return null;
+		} else {
+			int length = rnd.nextInt(11);
+			StringBuilder word = new StringBuilder();
+			for (int i = 0; i<length; i++){
+				word.append(alphabet.charAt(rnd.nextInt(alphabet.length()-1)));
 			}
+			word.append(rnd.nextInt());
+			word.append(symbols.charAt(rnd.nextInt(symbols.length()-1)));
+			return word.toString();
+		}
+	}
+		
+	public String generateRandomByear(){
+		Random rnd = new Random();
+		int rndValue = rnd.nextInt(4);
+		if (rndValue == 0){
+			 return "";
+		} else if (rndValue == 1) {
+			return null;
+		} else {
+			int byear = 1900 + rnd.nextInt(114);
+			return String.valueOf(byear);
+		}
+	}
+	
+	public String generateRandomNumber(long num){
+		Random rnd = new Random();
+		int rndValue = rnd.nextInt(4);
+		if (rndValue == 0){
+			 return "";
+		} else if (rndValue == 1) {
+			return null;
+		} else {
+			return String.valueOf(rnd.nextLong()+1);
+		}
+	}
+	
+	public String generateRandomMonth(){
+		Random rnd = new Random();
+		String[] months = new String[]{"January", "February", "March", "April", "June", "July", "August", "September", "October", "November", "December"};
+		int rndValue = rnd.nextInt(4);
+		if (rndValue == 0){
+			 return "";
+		} else if (rndValue == 1) {
+			return null;
+		} else {
+			return months[rnd.nextInt(12)];
+		}
 	}
 }
