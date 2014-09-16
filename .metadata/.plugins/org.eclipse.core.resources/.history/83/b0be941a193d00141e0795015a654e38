@@ -41,20 +41,19 @@ public class TestBase {
 	@DataProvider
 	public Iterator<Object[]> randomValidContactGenerator(){
 		List<Object[]> list = new ArrayList<Object[]>();
+		Random rnd = new Random();
 		for (int i = 0; i<5; i++){
 			ContactData contact = new ContactData();
 			contact.firstname = generateRandomString();
 			contact.lastname = generateRandomString();
 			contact.address = generateRandomString();
-			contact.homephone = generateRandomNumber(899999999);
-			contact.mobilephone = generateRandomNumber(899999999);
-			contact.workphone = generateRandomNumber(899999999);
+			contact.homephone = generateRandomNumber(89999999999);
+			contact.mobilephone = generateRandomNumber(89999999999);
+			contact.workphone = generateRandomNumber(89999999999);
 			contact.email = generateRandomString();
 			contact.email2 = generateRandomString();
 			contact.bmonth = generateRandomMonth();
-			if (contact.bmonth==null||contact.bmonth.equals("")){
-				contact.bday = null;
-			}else if (contact.bmonth == "February"){				
+			if (contact.bmonth == "February"){				
 				contact.bday = generateRandomNumber(29);
 			} else if (contact.bmonth.equals("January")||contact.bmonth.equals("March")||contact.bmonth.equals("May")||contact.bmonth.equals("July")||contact.bmonth.equals("August")||contact.bmonth.equals("October")||contact.bmonth.equals("December")) {
 				contact.bday = generateRandomNumber(31);
@@ -103,7 +102,7 @@ public class TestBase {
 		}
 	}
 	
-	public String generateRandomNumber(int num){
+	public String generateRandomNumber(long num){
 		Random rnd = new Random();
 		int rndValue = rnd.nextInt(4);
 		if (rndValue == 0){
@@ -111,13 +110,13 @@ public class TestBase {
 		} else if (rndValue == 1) {
 			return null;
 		} else {
-			return String.valueOf(rnd.nextInt(num)+1);
+			return String.valueOf(rnd.nextLong()+1);
 		}
 	}
 	
 	public String generateRandomMonth(){
 		Random rnd = new Random();
-		String[] months = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+		String[] months = new String[]{"January", "February", "March", "April", "June", "July", "August", "September", "October", "November", "December"};
 		int rndValue = rnd.nextInt(4);
 		if (rndValue == 0){
 			 return "";

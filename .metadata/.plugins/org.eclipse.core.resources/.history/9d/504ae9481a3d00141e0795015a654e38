@@ -52,7 +52,7 @@ public class TestBase {
 			contact.email = generateRandomString();
 			contact.email2 = generateRandomString();
 			contact.bmonth = generateRandomMonth();
-			if (contact.bmonth==null||contact.bmonth.equals("")){
+			if (contact.bmonth.equals(null)||contact.bmonth.equals("")){
 				contact.bday = null;
 			}else if (contact.bmonth == "February"){				
 				contact.bday = generateRandomNumber(29);
@@ -117,7 +117,7 @@ public class TestBase {
 	
 	public String generateRandomMonth(){
 		Random rnd = new Random();
-		String[] months = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+		String[] months = new String[]{"January", "February", "March", "April", "June", "July", "August", "September", "October", "November", "December"};
 		int rndValue = rnd.nextInt(4);
 		if (rndValue == 0){
 			 return "";

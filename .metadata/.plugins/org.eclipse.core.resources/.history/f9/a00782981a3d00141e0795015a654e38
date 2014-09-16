@@ -117,7 +117,7 @@ public class TestBase {
 	
 	public String generateRandomMonth(){
 		Random rnd = new Random();
-		String[] months = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+		String[] months = new String[]{"January", "February", "March", "April", "June", "July", "August", "September", "October", "November", "December"};
 		int rndValue = rnd.nextInt(4);
 		if (rndValue == 0){
 			 return "";

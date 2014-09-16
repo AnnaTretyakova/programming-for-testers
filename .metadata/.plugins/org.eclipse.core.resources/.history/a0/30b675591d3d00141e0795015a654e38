@@ -55,11 +55,11 @@ public class ContactData implements Comparable<ContactData>{
 	public int compareTo(ContactData other) {
 		if (this.lastname == null && other.lastname != null) {
 			return -1;
-		} else if (other.lastname == null && this.lastname != null) {
+		}else if (other.lastname == null && this.lastname != null){
 			return 1;
-		} else if (other.lastname == null && this.lastname == null) {
+		}else if (other.lastname == null && this.lastname == null){
 			return 0;
-		} else {
+		}else{
 			return this.lastname.toLowerCase().compareTo(other.lastname.toLowerCase());
 		}
 	}
