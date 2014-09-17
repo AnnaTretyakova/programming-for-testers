@@ -47,6 +47,17 @@ public class GroupData implements Comparable<GroupData>{
 
 	@Override
 	public int compareTo(GroupData other) {
+		/*
+		if (this.name == null && other.name != null) {
+			return -1;
+		} else if (other.name == null && this.name != null) {
+			return 1;
+		} else if (other.name == null && this.name == null) {
+			return 0;
+		} else{
+		return this.name.toLowerCase().compareTo(other.name.toLowerCase());
+		}
+		*/
 		return this.name.toLowerCase().compareTo(other.name.toLowerCase());
 	}
 	

@@ -53,7 +53,7 @@ public class ContactData implements Comparable<ContactData>{
 
 	@Override
 	public int compareTo(ContactData other) {
-		if (this.lastname == null && other.lastname != null) {
+		/*if (this.lastname == null && other.lastname != null) {
 			return -1;
 		} else if (other.lastname == null && this.lastname != null) {
 			return 1;
@@ -61,6 +61,7 @@ public class ContactData implements Comparable<ContactData>{
 			return 0;
 		} else {
 			return this.lastname.toLowerCase().compareTo(other.lastname.toLowerCase());
-		}
+		}*/
+		return this.lastname.toLowerCase().compareTo(other.lastname.toLowerCase());
 	}
 }

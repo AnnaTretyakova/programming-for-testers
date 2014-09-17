@@ -73,11 +73,9 @@ public class TestBase {
 		Random rnd = new Random();
 		String alphabet = "qwertyuiopasdfghjklzxcvbnm";
 		String symbols = "!@#$%^&*()_+{}|:<>?-=[]\\;,./\'\" ";
-		int rndValue = rnd.nextInt(4);
+		int rndValue = rnd.nextInt(3);
 		if (rndValue == 0){
 			 return "";
-		} else if (rndValue == 1) {
-			return null;
 		} else {
 			int length = rnd.nextInt(11);
 			StringBuilder word = new StringBuilder();
@@ -92,11 +90,9 @@ public class TestBase {
 		
 	public String generateRandomByear(){
 		Random rnd = new Random();
-		int rndValue = rnd.nextInt(4);
+		int rndValue = rnd.nextInt(3);
 		if (rndValue == 0){
 			 return "";
-		} else if (rndValue == 1) {
-			return null;
 		} else {
 			int byear = 1900 + rnd.nextInt(114);
 			return String.valueOf(byear);
@@ -121,8 +117,6 @@ public class TestBase {
 		int rndValue = rnd.nextInt(4);
 		if (rndValue == 0){
 			 return "";
-		} else if (rndValue == 1) {
-			return null;
 		} else {
 			return months[rnd.nextInt(12)];
 		}
