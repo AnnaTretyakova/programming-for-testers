@@ -82,11 +82,13 @@ public class ContactHelper extends HelperBase {
 		List<ContactData> contacts = new ArrayList<ContactData>();	
 		List<WebElement> rows = driver.findElements(By.xpath("//tr[@name]"));
 		for (WebElement row : rows) {
-			ContactData contact = new ContactData();
-			WebElement column_2 = row.findElement(By.xpath("td[2]"));
-			contact.lastname = column_2.getText();
-			contacts.add(contact);
+			List<WebElement> cells = row.findElements(By.xpath("//td[2]"));
+			for (WebElement cell: cells) {
+				ContactData contact = new ContactData();
+				contact.lastname = cell.getTagName();
+				contacts.add(contact);
 			}
+		}		
 		return contacts;
 	}
 }

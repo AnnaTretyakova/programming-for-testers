@@ -65,7 +65,6 @@ public class ContactHelper extends HelperBase {
 		click(By.xpath("//input[@value = 'Update']"));		
 	}
 
-	/*
 	public List<ContactData> getContacts() {
 		List<ContactData> contacts = new ArrayList<ContactData>();	
 		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
@@ -76,17 +75,19 @@ public class ContactHelper extends HelperBase {
 			contact.lastname = title.substring(title.lastIndexOf(" ")+1, title.length() - ")".length());
 			contacts.add(contact);
 		}
-	*/
-	
-		public List<ContactData> getContacts() {
-		List<ContactData> contacts = new ArrayList<ContactData>();	
-		List<WebElement> rows = driver.findElements(By.xpath("//tr[@name]"));
-		for (WebElement row : rows) {
-			ContactData contact = new ContactData();
-			WebElement column_2 = row.findElement(By.xpath("td[2]"));
-			contact.lastname = column_2.getText();
-			contacts.add(contact);
+		/*
+		WebElement test = driver.findElement(By.xpath(""));
+		List<WebElement> firstnames = driver.findElements(By.xpath(".//tr[]/td[2]"));
+		int i = 0 ;
+		for (WebElement firstname : firstnames) {
+			if (i > 0) {
+				ContactData contact = new ContactData();
+				contact.firstname = firstname.getTagName();
+				contacts.add(contact);
 			}
+			i++;
+		}
+		*/
 		return contacts;
 	}
 }
