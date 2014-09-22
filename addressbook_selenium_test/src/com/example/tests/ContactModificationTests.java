@@ -4,25 +4,25 @@ import static org.testng.Assert.assertEquals;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import org.testng.annotations.Test;
 
 public class ContactModificationTests extends TestBase {
 	
-	@Test
-	public void modifySomeContact () throws Exception{
-		int index = 0;
+	@Test(dataProvider = "randomValidContactGenerator")
+	public void modifySomeContact (ContactData contact) throws Exception{
 		app.getNavigationHelper().openMainPage();
 		
 		//save old state 
 		List<ContactData> oldList = app.getContactHelper().getContacts();
 		
+		Random rnd = new Random();
+		int index = rnd.nextInt(oldList.size()-1);
+		    
+		
 		//action
 		app.getContactHelper().initContactModification(index);
-		ContactData contact = new ContactData();
-		contact.firstname = "NewName";
-		contact.lastname = "NewLastName";
-		contact.address = "NewAdress";
 		app.getContactHelper().fillContactForm(contact);
 		app.getContactHelper().submitContactModification();
 		app.getContactHelper().returnHomePage();

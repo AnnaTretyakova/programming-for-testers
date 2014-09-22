@@ -83,8 +83,10 @@ public class ContactHelper extends HelperBase {
 		List<WebElement> rows = driver.findElements(By.xpath("//tr[@name]"));
 		for (WebElement row : rows) {
 			ContactData contact = new ContactData();
-			WebElement column_2 = row.findElement(By.xpath("td[2]"));
-			contact.lastname = column_2.getText();
+			contact.lastname = row.findElement(By.xpath("td[2]")).getText();
+			contact.firstname = row.findElement(By.xpath("td[3]")).getText();
+			contact.email = row.findElement(By.xpath("td[4]")).getText();
+			contact.homephone = row.findElement(By.xpath("td[5]")).getText();
 			contacts.add(contact);
 			}
 		return contacts;
