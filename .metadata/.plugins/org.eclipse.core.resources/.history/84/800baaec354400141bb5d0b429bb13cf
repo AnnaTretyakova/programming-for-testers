@@ -40,7 +40,6 @@ public class TestBase {
 	
 	@DataProvider
 	public Iterator<Object[]> randomValidContactGenerator(){
-		Random rnd = new Random();
 		List<Object[]> list = new ArrayList<Object[]>();
 		for (int i = 0; i<5; i++){
 			ContactData contact = new ContactData();
@@ -56,11 +55,11 @@ public class TestBase {
 			if (contact.bmonth.equals("-")){
 				contact.bday = "-";
 			}else if (contact.bmonth == "February"){				
-				contact.bday = String.valueOf(rnd.nextInt(29)+1);
+				contact.bday = generateRandomNumber(29);
 			} else if (contact.bmonth.equals("January")||contact.bmonth.equals("March")||contact.bmonth.equals("May")||contact.bmonth.equals("July")||contact.bmonth.equals("August")||contact.bmonth.equals("October")||contact.bmonth.equals("December")) {
-				contact.bday = String.valueOf(rnd.nextInt(31)+1);;
+				contact.bday = generateRandomNumber(31);
 			} else {
-				contact.bday = String.valueOf(rnd.nextInt(30)+1);;
+				contact.bday = generateRandomNumber(30);
 			}
 			contact.byear = generateRandomByear();
 			contact.address2 = generateRandomString();;

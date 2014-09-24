@@ -21,7 +21,6 @@ public class ContactCreationTests extends TestBase {
     app.getContactHelper().submitNewContact();
     app.getContactHelper().returnHomePage();
     
-    
     //save new states
     List<ContactData> newList = app.getContactHelper().getContacts();
     
