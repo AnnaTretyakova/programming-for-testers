@@ -11,10 +11,7 @@ import org.testng.annotations.Test;
 public class GroupRemovalTests extends TestBase{
 
 	@Test
-	public void deleteSomeGroup() throws Exception{
-		app.getNavigationHelper().openMainPage();
-	    app.getNavigationHelper().gotoGroupsPage();
-	    
+	public void deleteSomeGroup() throws Exception{    
 	    //save old state
 	    List<GroupData> oldList = app.getGroupHelper().getGroups();
 	    
@@ -22,8 +19,7 @@ public class GroupRemovalTests extends TestBase{
 		int index = rnd.nextInt(oldList.size()-1);
 	    
 	    //actions
-		app.getGroupHelper().deleteGroup(index);
-		app.getGroupHelper().returnGroupPage();		
+		app.getGroupHelper().deleteGroup(index);	
 		
 		 //save new state
 	    List<GroupData> newList = app.getGroupHelper().getGroups();

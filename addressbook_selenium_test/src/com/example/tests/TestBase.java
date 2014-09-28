@@ -29,42 +29,43 @@ public class TestBase {
 	public Iterator<Object[]> randomValidGroupGenerator(){
 		List<Object[]> list = new ArrayList<Object[]>();
 		for (int i = 0; i<5; i++){
-			GroupData group = new GroupData();
-			group.name = generateRandomString();
-			group.header = generateRandomString();
-			group.footer = generateRandomString();
+			GroupData group = new GroupData()
+			.withName(generateRandomString())
+			.withHeader(generateRandomString())
+			.withFooter(generateRandomString());
 			list.add(new Object[]{group});
 		}
 		return list.iterator();
 	}
-	
+
 	@DataProvider
 	public Iterator<Object[]> randomValidContactGenerator(){
 		Random rnd = new Random();
 		List<Object[]> list = new ArrayList<Object[]>();
 		for (int i = 0; i<5; i++){
-			ContactData contact = new ContactData();
-			contact.firstname = generateRandomString();
-			contact.lastname = generateRandomString();
-			contact.address = generateRandomString();
-			contact.homephone = generateRandomNumber(899999999);
-			contact.mobilephone = generateRandomNumber(899999999);
-			contact.workphone = generateRandomNumber(899999999);
-			contact.email = generateRandomString();
-			contact.email2 = generateRandomString();
-			contact.bmonth = generateRandomMonth();
-			if (contact.bmonth.equals("-")){
-				contact.bday = "-";
-			}else if (contact.bmonth == "February"){				
-				contact.bday = String.valueOf(rnd.nextInt(29)+1);
-			} else if (contact.bmonth.equals("January")||contact.bmonth.equals("March")||contact.bmonth.equals("May")||contact.bmonth.equals("July")||contact.bmonth.equals("August")||contact.bmonth.equals("October")||contact.bmonth.equals("December")) {
-				contact.bday = String.valueOf(rnd.nextInt(31)+1);;
+			ContactData contact = new ContactData()
+			.withFirstName(generateRandomString())
+			.withLastName(generateRandomString())
+			.withAdress(generateRandomString())
+			.withHomephone(generateRandomNumber(899999999))
+			.withMobilephone(generateRandomNumber(899999999))
+			.withWorkphone(generateRandomNumber(899999999))
+			.withEmail(generateRandomString())
+			.withEmail2(generateRandomString())
+			.withBmonth(generateRandomMonth())
+			.withByear(generateRandomByear())
+			.withAddress2(generateRandomString())
+			.withHomephone2(generateRandomNumber(899999999));
+			if (contact.getBmonth().equals("-")){
+				contact.withBday("-");
+			}else if (contact.getBmonth().equals("February")){				
+				contact.withBday(String.valueOf(rnd.nextInt(29)+1));
+			} else if (contact.getBmonth().equals("January")||contact.getBmonth().equals("March")||contact.getBmonth().equals("May")||contact.getBmonth().equals("July")||contact.getBmonth().equals("August")||contact.getBmonth().equals("October")||contact.getBmonth().equals("December")) {
+				contact.withBday(String.valueOf(rnd.nextInt(31)+1));
 			} else {
-				contact.bday = String.valueOf(rnd.nextInt(30)+1);;
+				contact.withBday(String.valueOf(rnd.nextInt(30)+1));
 			}
-			contact.byear = generateRandomByear();
-			contact.address2 = generateRandomString();;
-			contact.homephone2 = generateRandomString();;
+			
 			list.add(new Object[]{contact});
 		}
 		return list.iterator();
