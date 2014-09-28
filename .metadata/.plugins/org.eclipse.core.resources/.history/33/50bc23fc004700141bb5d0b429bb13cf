@@ -73,18 +73,18 @@ public class TestBase {
 	public String generateRandomString(){
 		Random rnd = new Random();
 		String alphabet = "qwertyuiopasdfghjklzxcvbnm";
-		//String symbols = "!@#$%^&*()_+{}|:<>?-=[]\\;,./\'\" ";
+		String symbols = "!@#$%^&*()_+{}|:<>?-=[]\\;,./\'\" ";
 		int rndValue = rnd.nextInt(3);
 		if (rndValue == 0){
 			 return "";
 		} else {
-			int length = rnd.nextInt(9)+1;
+			int length = rnd.nextInt(11);
 			StringBuilder word = new StringBuilder();
 			for (int i = 0; i<length; i++){
 				word.append(alphabet.charAt(rnd.nextInt(alphabet.length()-1)));
 			}
 			word.append(rnd.nextInt());
-			///word.append(symbols.charAt(rnd.nextInt(symbols.length()-1)));
+			word.append(symbols.charAt(rnd.nextInt(symbols.length()-1)));
 			return word.toString();
 		}
 	}
