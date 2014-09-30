@@ -27,7 +27,7 @@ public class ContactHelper extends HelperBase {
 	}
 	
 	public void rebuildContacts() {
-		List<ContactData> cachedContacts = new ArrayList<ContactData>();	
+		cachedContacts = new ArrayList<ContactData>();	
 		
 		manager.navigateTo().mainPage();
 		List<WebElement> rows = driver.findElements(By.xpath("//tr[@name]"));
