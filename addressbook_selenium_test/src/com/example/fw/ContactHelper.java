@@ -19,6 +19,7 @@ public class ContactHelper extends HelperBase {
 	
 	private List<ContactData> cachedContacts;
 	
+	
 	public List<ContactData> getContacts(){
 		if(cachedContacts == null){
 			rebuildContacts();
@@ -39,6 +40,38 @@ public class ContactHelper extends HelperBase {
 			contact.withHomephone(row.findElement(By.xpath("td[5]")).getText());
 			cachedContacts.add(contact);
 		}
+	}
+	
+	public List<String> getPhonesFromPrintPhonesPage(){
+		
+		List<String> phones = new ArrayList<String>();	
+		
+		manager.navigateTo().printPhonesPage();
+		List<WebElement> cells = driver.findElements(By.xpath("//table/tbody//td"));
+		for (WebElement cell : cells) {
+				String textInCell = cell.getText();
+				if (textInCell.contains("H:")){
+					String phone = textInCell.substring(textInCell.indexOf("H")+3, textInCell.length());
+					phone = phone.substring(0, phone.indexOf("\n"));
+					phones.add(phone);
+				}else{
+					phones.add("");
+				}				
+			}
+		return phones;
+	}
+	
+	public List<String> getPhonesFromHomePage(){
+		
+		List<String> phones = new ArrayList<String>();
+		
+		//manager.navigateTo().mainPage();
+		manager.driver.get(manager.baseUrl + "/addressbookv4.1.4/");
+		List<WebElement> rows = driver.findElements(By.xpath("//tr[@name]"));
+		for (WebElement row : rows) {
+			phones.add(row.findElement(By.xpath("td[5]")).getText());
+		}
+		return phones;	
 	}
 	
 	public ContactHelper createContact(ContactData contact) {
@@ -73,6 +106,11 @@ public class ContactHelper extends HelperBase {
 
 	public ContactHelper initContactCreation() {
 		click(By.linkText("add new"));
+		return this;
+	}
+	
+	public ContactHelper initPrintPhones() {
+		click(By.linkText("print phones"));
 		return this;
 	}
 

@@ -31,4 +31,19 @@ public class NavigationHelper extends HelperBase {
 			return false;
 		}
 	}
+	
+	public void printPhonesPage() {
+		if (! onPrintPhonesPage()){
+			click(By.linkText("print phones"));
+	}
+	}
+	
+	private boolean onPrintPhonesPage() {
+		if(driver.getCurrentUrl().contains(".+print.+phones")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 }

@@ -1,6 +1,8 @@
 package com.example.tests;
 
-import static org.testng.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.*;
+
 import org.testng.annotations.Test;
 
 import com.example.utils.SortedListOf;
@@ -20,7 +22,7 @@ public class GroupCreationTests extends TestBase {
     
     //compare states  
     oldList.add(group);
-    assertEquals(oldList, newList);
+    assertThat(newList,equalTo(oldList.withAdded(group)));
   }
   
 }
