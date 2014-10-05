@@ -17,7 +17,12 @@ public class ContactHelper extends HelperBase {
 	
 	private SortedListOf<ContactData> cachedContacts;
 	
+<<<<<<< HEAD
+	
+	public List<ContactData> getContacts(){
+=======
 	public SortedListOf<ContactData> getContacts(){
+>>>>>>> dc5869717220379d08fbfa36b46f8a05ef1d24da
 		if(cachedContacts == null){
 			rebuildContacts();
 		}
