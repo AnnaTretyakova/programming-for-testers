@@ -39,28 +39,33 @@ public class ContactHelper extends HelperBase {
 		}
 	}
 	
-	public List<String> getPhonesFromPrintPhonesPage(){
+	public SortedListOf<String> getPhonesFromPrintPhonesPage(){
 		
-		List<String> phones = new ArrayList<String>();	
+		SortedListOf<String> phones = new SortedListOf<String>();	
 		
 		manager.navigateTo().printPhonesPage();
 		List<WebElement> cells = driver.findElements(By.xpath("//table/tbody//td"));
 		for (WebElement cell : cells) {
 				String textInCell = cell.getText();
-				if (textInCell.contains("H:")){
-					String phone = textInCell.substring(textInCell.indexOf("H")+3, textInCell.length());
-					phone = phone.substring(0, phone.indexOf("\n"));
-					phones.add(phone);
+				String phone = textInCell.substring(textInCell.indexOf("\n")+1);
+				if (phone.contains("H")||phone.contains("M")||phone.contains("W")){
+					if (phone.contains("\n")){
+					phone = phone.substring(3, phone.indexOf("\n"));
+					}else{
+						phone = phone.substring(3);
+					}
 				}else{
-					phones.add("");
+					//if (phone.matches("Birthday:\\s*.*\\n*.*"))
+					phone = "";
+				}			
+				phones.add(phone);
 				}				
-			}
 		return phones;
 	}
 	
-	public List<String> getPhonesFromHomePage(){
+	public SortedListOf<String> getPhonesFromHomePage(){
 		
-		List<String> phones = new ArrayList<String>();
+		SortedListOf<String> phones = new SortedListOf<String>();
 		
 		//manager.navigateTo().mainPage();
 		manager.driver.get(manager.baseUrl + "/addressbookv4.1.4/");
